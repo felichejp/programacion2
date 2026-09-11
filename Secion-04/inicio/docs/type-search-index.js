@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"juego","l":"Asteroide"},{"p":"juego","l":"Comprobacion"},{"p":"juego","l":"GeneradorDeAsteroides"}];updateSearchResults();
