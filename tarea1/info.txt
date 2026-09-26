@@ -1,3 +1,4 @@
 COMPILACIÓN Y EJECUCIÓN:
+-Tener .jar en esta carpeta (gamelab-1.0.0.jar)
 javac -cp gamelab-1.0.0.jar MiPrimerJuego.java
 java -cp "gamelab-1.0.0.jar:." MiPrimerJuego
