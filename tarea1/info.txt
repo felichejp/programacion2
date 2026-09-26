@@ -1,0 +1,3 @@
+COMPILACIÓN Y EJECUCIÓN:
+javac -cp gamelab-1.0.0.jar MiPrimerJuego.java
+java -cp "gamelab-1.0.0.jar:." MiPrimerJuego
