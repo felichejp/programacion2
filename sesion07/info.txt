@@ -1,5 +1,5 @@
 COMPILACION Y EJECUCIÓN:
-
+-Tener .jar en carpeta (/lib)  (gamelab-1.0.0.jar)
 cd src/
 javac -cp ../lib/gamelab-1.0.1.jar *.java
 java -cp "../lib/gamelab-1.0.1.jar:." Ataque
