@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "JuegoConPlayer",
+            "request": "launch",
+            "mainClass": "JuegoConPlayer",
+            "projectName": "sec-on-062_9b407f3a"
+        },
+        {
+            "type": "java",
+            "name": "Ataque",
+            "request": "launch",
+            "mainClass": "Ataque",
+            "projectName": "sec-on-062_9b407f3a"
+        },
+        {
+            "type": "java",
+            "name": "JuegoConPlayer",
+            "request": "launch",
+            "mainClass": "JuegoConPlayer",
+            "projectName": "sec-on-062_a3591ed9"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        }
+    ]
+}
