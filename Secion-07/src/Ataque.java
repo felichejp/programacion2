@@ -1,0 +1,113 @@
+import gamelab.graphics.Color;
+
+/**
+ * Intenta romper la invariante de {@link Player}.
+ *
+ * <p>Sin este programa, "está protegido" es una afirmación sin respaldo. Cada ataque se ejecuta y
+ * al final se comprueba la invariante: si alguno la rompe, el programa termina con error.
+ */
+public final class Ataque {
+
+    private Ataque() {
+    }
+
+    /**
+     * Ejecuta el ataque.
+     *
+     * @param args no se usan
+     */
+    public static void main(String[] args) {
+        Player jugador = new Player(400.0, 300.0, 5.0, 20.0, Color.YELLOW);
+        System.out.println("Estado inicial: vidas=" + jugador.vidas() + " radio=" + jugador.radio());
+
+        // 1. Moverlo diez mil píxeles en cada dirección (y en diagonal).
+        jugador.mover(2000.0, 0.0);
+        comprobar(jugador, "mover +x 10000 px");
+        jugador.mover(-4000.0, 0.0);
+        comprobar(jugador, "mover -x 20000 px");
+        jugador.mover(0.0, 2000.0);
+        comprobar(jugador, "mover +y 10000 px");
+        jugador.mover(0.0, -4000.0);
+        comprobar(jugador, "mover -y 20000 px");
+        jugador.mover(Double.MAX_VALUE, Double.MAX_VALUE);
+        comprobar(jugador, "mover con Double.MAX_VALUE");
+        jugador.mover(Double.MAX_VALUE, -Double.MAX_VALUE);
+        comprobar(jugador, "mover con signos opuestos");
+
+        // 2. Direcciones que no son números.
+        intentarRechazado("mover(NaN)", () -> jugador.mover(Double.NaN, 0.0));
+        intentarRechazado("mover(Infinity)", () -> jugador.mover(0.0, Double.POSITIVE_INFINITY));
+        comprobar(jugador, "tras direcciones no numéricas");
+
+        // 3. Quitarle veinte vidas y pasarse del máximo.
+        for (int i = 0; i < 20; i++) {
+            jugador.perderVida();
+        }
+        comprobar(jugador, "perder 20 vidas");
+        for (int i = 0; i < 20; i++) {
+            jugador.ganarVida();
+        }
+        comprobar(jugador, "ganar 20 vidas");
+
+        // 4. Encogerlo hasta desaparecer, y con valores absurdos.
+        jugador.encoger(1_000_000.0);
+        comprobar(jugador, "encoger 1 000 000");
+        jugador.encoger(Double.POSITIVE_INFINITY);
+        comprobar(jugador, "encoger Infinity");
+        intentarRechazado("encoger(-50)", () -> jugador.encoger(-50.0));
+        intentarRechazado("encoger(NaN)", () -> jugador.encoger(Double.NaN));
+        comprobar(jugador, "tras radios negativos y NaN");
+
+        // 5. Construirlo con valores inválidos.
+        intentarRechazado("radio negativo", () -> new Player(400, 300, 5, -10, Color.YELLOW));
+        intentarRechazado("radio cero", () -> new Player(400, 300, 5, 0, Color.YELLOW));
+        intentarRechazado("radio gigante", () -> new Player(400, 300, 5, 1e9, Color.YELLOW));
+        intentarRechazado("radio NaN", () -> new Player(400, 300, 5, Double.NaN, Color.YELLOW));
+        intentarRechazado("velocidad 0", () -> new Player(400, 300, 0, 20, Color.YELLOW));
+        intentarRechazado("velocidad negativa", () -> new Player(400, 300, -3, 20, Color.YELLOW));
+        intentarRechazado("posición NaN", () -> new Player(Double.NaN, 300, 5, 20, Color.YELLOW));
+        intentarRechazado("color null", () -> new Player(400, 300, 5, 20, null));
+
+        // 6. Construirlo fuera de pantalla: debe NACER ya dentro.
+        comprobar(new Player(-5000, 99999, 5, 20, Color.YELLOW), "nacer fuera de pantalla");
+
+        // 7. El estado() devuelto no da control sobre el jugador.
+        Player.Estado foto = jugador.estado();
+        double radioAntes = jugador.radio();
+        foto.toString(); // un record no tiene setters: no hay nada que llamar para modificarlo.
+        comprobar(jugador, "tras pedir estado()");
+        if (jugador.radio() != radioAntes) {
+            fallar("estado() alteró al jugador");
+        }
+
+        System.out.println("INVARIANTE INTACTA. Estado final: " + jugador.estado());
+    }
+
+    /** Verifica la invariante completa usando solo la interfaz pública. */
+    private static void comprobar(Player p, String ataque) {
+        double r = p.radio();
+        boolean ok = r >= Player.RADIO_MINIMO
+                && p.x() - r >= 0.0 && p.x() + r <= Player.ANCHO
+                && p.y() - r >= 0.0 && p.y() + r <= Player.ALTO
+                && p.vidas() >= 0 && p.vidas() <= Player.VIDAS_MAXIMAS;
+        if (!ok) {
+            fallar("Invariante ROTA tras: " + ataque + " -> " + p.estado());
+        }
+        System.out.println("OK   " + ataque + " -> " + p.estado());
+    }
+
+    /** Un intento inválido debe ser rechazado con IllegalArgumentException. */
+    private static void intentarRechazado(String ataque, Runnable accion) {
+        try {
+            accion.run();
+        } catch (IllegalArgumentException e) {
+            System.out.println("OK   rechazado: " + ataque + " (" + e.getMessage() + ")");
+            return;
+        }
+        fallar("NO fue rechazado: " + ataque);
+    }
+
+    private static void fallar(String mensaje) {
+        throw new AssertionError(mensaje);
+    }
+}
