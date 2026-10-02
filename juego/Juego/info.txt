@@ -1,0 +1,7 @@
+COMPILACIÓN Y EJECUCIÓN:
+-Tener .jar en carpeta (/lib)  (gamelab-1.0.1.jar)
+-Ubicación: Carpeta principal `juego/` (fuera de `Juego/`)
+
+
+javac -cp "Juego/lib/gamelab-1.0.1.jar:." Juego/config/Configuracion.java Juego/entidad/Player.java Juego/Juego.java
+java -cp "Juego/lib/gamelab-1.0.1.jar:." Juego.Juego
