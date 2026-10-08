@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>curso.evaluacion</groupId>
-    <artifactId>examen-1</artifactId>
+    <artifactId>examen1</artifactId>
     <version>1.0.0</version>
 
     <properties>
@@ -27,23 +27,16 @@
     </dependencies>
 
     <build>
-        <sourceDirectory>inicio</sourceDirectory>
-        <testSourceDirectory>pruebas</testSourceDirectory>
+    <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        
         <plugins>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
-        <configuration>
-            <release>21</release>
-        </configuration>
-    </plugin>
-
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.5.2</version>
-    </plugin>
-</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.2</version>
+            </plugin>
+        </plugins>
     </build>
 </project>
+
