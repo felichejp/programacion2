@@ -1,0 +1,2 @@
+En los apartados de capacidad y nivel se decalaran como privados porque es para poder aplicar encapsulamiento porque si esas clases son publicas cualquie clase podria modificarlos y las validaciones se las saltaria, entonces como es privado hacemos que el codigo interactue solamente con el tanque con llenar y consumir.
+La invariante que protege la clase es la logica del deposito qe hace que siempre sea mayor o igual a 0 y que no supere su nivel maximo de capacidad
