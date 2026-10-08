@@ -1,0 +1,3 @@
+Justificación del diseño
+
+Los campos 'capacidad' y 'nivel' son privados para cumplir con la parte o el principio de encapsulamiento. Al hacer restringido el acceso directo desde el exterior, se evita que otra clase pueda llegar a modificar el estado del objeto sin pasar por los metodos correspondientes. Esta "proteccion" nos llega a garantizar que se mantenga la invariante de la clase: el nivel de combustible nunca puede ser negativo ni sobrepasar la capacidad total declarada. Cualquier alteracion que llegue a suceder al estado, se filtra mediante validaciones en los metodos 'llenar', 'consumir' y el constructor, impidiendo estados que no sean consistentes en la aplicacion.
