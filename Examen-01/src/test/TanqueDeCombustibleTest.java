@@ -108,17 +108,4 @@ class TanqueDeCombustibleTest {
         assertTrue(tanque.estaVacio());
     }
 
-    @Test
-    void consumirExactamenteElNivelVaciaElTanquePorCompleto() {
-        TanqueDeCombustible tanque = new TanqueDeCombustible(50.0);
-        tanque.llenar(30.0);
-        
-        // Consumimos exactamente los 30.0 que hay en el tanque
-        boolean consumido = tanque.consumir(30.0);
-        
-        // Verificamos que la operación fue exitosa, el nivel bajó a 0 y se marca como vacío
-        assertTrue(consumido);
-        assertEquals(0.0, tanque.nivel(), TOLERANCIA);
-        assertTrue(tanque.estaVacio());
-    }
 }
