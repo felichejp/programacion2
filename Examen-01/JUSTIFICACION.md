@@ -1,0 +1,3 @@
+Los campos `capacidad` y `nivel` se declararon como privados para garantizar el encapsulamiento de la clase. Si fueran públicos, cualquier parte del programa podría modificarlos directamente y asignarles valores absurdos (como un nivel de -50 o una capacidad de 0), saltándose todas las validaciones de seguridad. 
+
+El invariante que protege esta clase es que la cantidad de combustible actual (el nivel) nunca puede ser menor a cero, ni tampoco puede ser mayor a la capacidad total del tanque. Al hacer los campos privados y obligar al sistema a usar únicamente los métodos `llenar()` y `consumir()`, nos aseguramos de que cualquier cambio pase por nuestras condiciones lógicas, haciendo matemáticamente imposible que el tanque de la nave quede en un estado inválido.
