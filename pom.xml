@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>curso.evaluacion</groupId>
-    <artifactId>examen1</artifactId>
+    <artifactId>examen-1</artifactId>
     <version>1.0.0</version>
 
     <properties>
@@ -27,9 +27,8 @@
     </dependencies>
 
     <build>
-    <sourceDirectory>src/main/java</sourceDirectory>
-        <testSourceDirectory>src/test/java</testSourceDirectory>
-        
+        <sourceDirectory>inicio</sourceDirectory>
+        <testSourceDirectory>pruebas</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -39,4 +38,3 @@
         </plugins>
     </build>
 </project>
-
