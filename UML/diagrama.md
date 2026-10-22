@@ -11,8 +11,8 @@ classDiagram
     Mundo "1" --> "1" Nave : contiene
     Mundo "1" --> "*" Asteroide : contiene
     Mundo "1" --> "*" Disparo : contiene
-    Mundo "1" --> "1" Puntos : administra
-    Mundo "1" --> "1" Vidas : administra
+    Mundo "1" --> "*" Puntos : administra
+    Mundo "1" --> "*" Vidas : administra
     Mundo "1" --> "1" GameCanvas : muestra
 
     Nave ..> Disparo : dispara
