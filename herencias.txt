@@ -1,0 +1,5 @@
+Herencia: Es un mecanismo que permite a una clase (conocida como clase derivada o subclase) heredar propiedades y métodos de otra clase (clase base o superclase), lo que facilita la reutilización y organización del código.
+
+Clase abstracta: Es una clase especial que no puede ser instanciada directamente (no se pueden crear objetos a partir de ella por sí sola). Funciona como una plantilla o diseño base que otras clases deben extender, pudiendo incluir métodos abstractos que obligatoriamente deben ser implementados en las clases hijas.
+
+Uso de variables heredadas: Se refiere a la capacidad de una clase hija para acceder, modificar y utilizar los atributos (variables) que le fueron transmitidos por su clase padre a través de la herencia. 
