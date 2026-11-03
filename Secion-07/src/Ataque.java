@@ -33,7 +33,7 @@ public final class Ataque {
         comprobar(jugador, "mover con Double.MAX_VALUE");
         jugador.mover(Double.MAX_VALUE, -Double.MAX_VALUE);
         comprobar(jugador, "mover con signos opuestos");
-
+        
         // 2. Direcciones que no son números.
         intentarRechazado("mover(NaN)", () -> jugador.mover(Double.NaN, 0.0));
         intentarRechazado("mover(Infinity)", () -> jugador.mover(0.0, Double.POSITIVE_INFINITY));
