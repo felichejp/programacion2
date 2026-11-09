@@ -1,0 +1,9 @@
+tareas/PrimerJuego.class
+juego/entidades/Player.class
+juego/Asteroide.class
+juego/Juego.class
+juego/GeneradorDeAsteroides.class
+juego/config/Configuracion.class
+juego/Comprobacion.class
+tareas/Ataque.class
+tareas/Las3Esferas.class
