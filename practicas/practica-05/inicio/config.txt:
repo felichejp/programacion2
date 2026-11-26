@@ -1,0 +1,4 @@
+# Configuración inicial de Asteroids
+vidasIniciales=3
+asteroidesIniciales=4
+municionAmetralladora=120
