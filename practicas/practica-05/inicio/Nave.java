@@ -22,7 +22,7 @@ public final class Nave extends EntidadMovil {
 
     public static final double RADIO_AMETRALLADORA = 8.0;
 
-    public static final int VIDAS_INICIALES = 3;
+    public static final int VIDAS_INICIALES = ConfiguracionJuego.VIDAS_INICIALES;
     public static final int DURACION_ESCUDO = 180; // 3 segundos a 60 FPS
 
     public static final int AMETRALLADORA_BACIA = 0; // 5 segundos a 60 FPS
@@ -32,14 +32,19 @@ public final class Nave extends EntidadMovil {
     private Input input;
     private double anguloGrados;
     private double velocidadAngular;
-    private int vidas = VIDAS_INICIALES;
+    private int vidas;
     private int framesEscudo;
     private int municionEspecial = AMETRALLADORA_BACIA;
     private int enfriamentoDisparo = 0;
 
     public Nave(double x, double y, GameImage sprite) {
+        this(x, y, sprite, VIDAS_INICIALES);
+    }
+
+    public Nave(double x, double y, GameImage sprite, int vidasIniciales) {
         super(x, y);
         this.sprite = sprite;
+        this.vidas = vidasIniciales;
     }
 
     public void fijarInput(Input input) {
@@ -82,6 +87,7 @@ public final class Nave extends EntidadMovil {
             fijarVelocidad(0, 0);
             this.velocidadAngular = 0;
             this.framesEscudo = DURACION_ESCUDO;
+            this.municionEspecial = 0;
 
 
             return true;
@@ -168,6 +174,7 @@ public final class Nave extends EntidadMovil {
         this.municionEspecial += MunicionOtorgada;
     }
 
+    
 
     public void ganarVida() {
         this.vidas += 1;

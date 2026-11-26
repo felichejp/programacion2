@@ -18,9 +18,14 @@ public final class InitTestPractica05 {
     }
 
     public static void main(String[] args) {
+
+
+        // falta pruevas previas
+
+        
         System.out.println("=== Tablero INIT-TEST (inicio) - Práctica 5 ===");
-        int verdes = 0;
-        int total = 7;
+        int verdes5 = 0;
+        int total5 = 7;
 
         TablaRanking ranking = new TablaRanking();
         ranking.registrar(new RegistroPuntuacion("ZED-09", 450, 8));
@@ -44,7 +49,7 @@ public final class InitTestPractica05 {
             }
 
         })) {
-            verdes++;
+            verdes5++;
         }
 
         if (ejecutarPaso("Paso 2: TablaRanking.ordenadosPor con Comparator", () -> {
@@ -57,7 +62,7 @@ public final class InitTestPractica05 {
                 throw new AssertionError("Comparator POR_CALLSIGN incorrecto | obtenido: " + porCallsign);
             }
         })) {
-            verdes++;
+            verdes5++;
         }
 
 
@@ -90,7 +95,7 @@ public final class InitTestPractica05 {
             }
 
         })) {
-            verdes++;
+            verdes5++;
         }
 
         if (ejecutarPaso("Paso 4: Búsqueda binaria con TablaRanking.buscarPorPuntos", () -> {
@@ -107,7 +112,7 @@ public final class InitTestPractica05 {
                 throw new AssertionError("buscarPorPuntos(9999) debía devolver índice negativo | obtenido: " + noExiste);
             }
         })) {
-            verdes++;
+            verdes5++;
         }
 
         if (ejecutarPaso("Paso 5: RepositorioRankingArchivo.guardar y cargar con try-con-recursos", () -> {
@@ -134,7 +139,7 @@ public final class InitTestPractica05 {
                 Files.deleteIfExists(tempRanking);
             }
         })) {
-            verdes++;
+            verdes5++;
         }
 
         if (ejecutarPaso("Paso 6: Tolerancia a líneas CSV corruptas (lineasInvalidasOmitidas = 3)", () -> {
@@ -153,7 +158,7 @@ public final class InitTestPractica05 {
                 Files.deleteIfExists(tempRanking);
             }
         })) {
-            verdes++;
+            verdes5++;
         }
 
         if (ejecutarPaso("Paso 7: Oleada progresiva al quedarse sin asteroides (Asteroide.avanzarOleadaSiVacia)", () -> {
@@ -178,12 +183,12 @@ public final class InitTestPractica05 {
                         + oleada3 + ", asteroides=" + campo.size());
             }
         })) {
-            verdes++;
+            verdes5++;
         }
 
         System.out.println("----------------------------------------");
-        System.out.println("Resumen TDD: " + verdes + "/" + total + " pasos en VERDE.");
-        if (verdes == total) {
+        System.out.println("Resumen TDD: " + verdes5 + "/" + total5 + " pasos en VERDE.");
+        if (verdes5 == total5) {
             System.out.println("PASS: Práctica 5 verificada.");
         } else {
             System.out.println("Siguiente acción: resuelve el primer paso marcado en [ROJO] y vuelve a ejecutar.");

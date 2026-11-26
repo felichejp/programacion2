@@ -48,32 +48,21 @@ public final class AsteroidsGame extends Game {
 
     @Override
     public void start() {
-        ConfiguracionJuego config;
-        try {
-            config = ConfiguracionJuego.cargar(Path.of("config.txt"));
-        } catch (IOException e) {
-            config = ConfiguracionJuego.porDefecto();   // error de lectura: valores seguros
-        }
-
-        int vidas = config.vidasIniciales();
-        int municion = config.municionAmetralladora();
-        
-
 // asteroides iniciales: ver nota
-        fondo = cargador.cargarDecorativo("/sprites/fondo.png");
-        GameImage spriteNave = cargador.cargarEsencial("/sprites/nave.png", "nave");
-        spriteDisparo = cargador.cargarEsencial("/sprites/disparo.png", "disparo");
+        fondo = cargador.cargarDecorativo("/resources/sprites/fondo.png");
+        GameImage spriteNave = cargador.cargarEsencial("/resources/sprites/nave.png", "nave");
+        spriteDisparo = cargador.cargarEsencial("/resources/sprites/disparo.png", "disparo");
         spriteDisparoAmetralladora = cargador.cargarEsencial(
-                "/sprites/disparo-ametralladora.png", "disparo ametralladora");
-        spriteEstrella = cargador.cargarEsencial("/sprites/estrella.png", "estrella");
-        spriteArmaEspecial = cargador.cargarEsencial("/sprites/arma-especial.png", "arma especial");
+                "/resources/sprites/disparo-ametralladora.png", "disparo ametralladora");
+        spriteEstrella = cargador.cargarEsencial("/resources/sprites/estrella.png", "estrella");
+        spriteArmaEspecial = cargador.cargarEsencial("/resources/sprites/arma-especial.png", "arma especial");
 
         spritesAsteroide.put(TamanoAsteroide.GRANDE,
-                cargador.cargarEsencial("/sprites/asteroide-grande.png", "asteroide grande"));
+                cargador.cargarEsencial("/resources/sprites/asteroide-grande.png", "asteroide grande"));
         spritesAsteroide.put(TamanoAsteroide.MEDIANO,
-                cargador.cargarEsencial("/sprites/asteroide-mediano.png", "asteroide mediano"));
+                cargador.cargarEsencial("/resources/sprites/asteroide-mediano.png", "asteroide mediano"));
         spritesAsteroide.put(TamanoAsteroide.PEQUENO,
-                cargador.cargarEsencial("/sprites/asteroide-pequeno.png", "asteroide pequeno"));
+                cargador.cargarEsencial("/resources/sprites/asteroide-pequeno.png", "asteroide pequeno"));
 
         try {
             ranking = repositorioRanking.cargar(ARCHIVO_RECORDS);
@@ -85,15 +74,18 @@ public final class AsteroidsGame extends Game {
             ranking.registrar(new RegistroPuntuacion("NEO-02", 350, 7));
         }
 
-        nave = new Nave(EntidadMovil.ANCHO / 2.0, EntidadMovil.ALTO / 2.0, spriteNave);
+        nave = new Nave(
+                EntidadMovil.ANCHO / 2.0,
+                EntidadMovil.ALTO / 2.0,
+                spriteNave,
+                ConfiguracionJuego.VIDAS_INICIALES);
         nave.fijarInput(input());
-        iniciarOleada(oleada);
-
+        iniciarOleada(oleada, ConfiguracionJuego.ASTEROIDES_INICIALES);
     }
 
-    private void iniciarOleada(int numeroOleada) {
+    private void iniciarOleada(int numeroOleada, int cantidadAsteroides) {
         asteroides.addAll(Asteroide.crearOleada(
-                numeroOleada, spritesAsteroide.get(TamanoAsteroide.GRANDE)));
+                numeroOleada, cantidadAsteroides, spritesAsteroide.get(TamanoAsteroide.GRANDE)));
         powerUps.agregar(new EstrellaVida(220, 300, spriteEstrella));
         powerUps.agregar(new CajaAmetralladora(580, 300, spriteArmaEspecial));
     }

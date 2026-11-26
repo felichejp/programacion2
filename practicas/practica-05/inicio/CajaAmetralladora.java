@@ -8,7 +8,7 @@ import gamelab.graphics.GameImage;
 public final class CajaAmetralladora extends PowerUp {
 
     public static final double RADIO = 14.0;
-    public static final int MUNICION_OTORGADA = 100;
+    public static final int MUNICION_OTORGADA = ConfiguracionJuego.MUNICION_AMETRALLADORA;
     public static final int ESPERA_REAPARICION_FRAMES = 20 * 60; // 20 segundos a 60 FPS
     public static final int DURACION_REAPARICION_FRAMES = 5 * 60; // 5 segundos a 60 FPS
 

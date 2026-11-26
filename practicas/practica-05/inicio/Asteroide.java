@@ -95,6 +95,13 @@ public final class Asteroide extends EntidadMovil {
      */
     public static List<Asteroide> crearOleada(int numeroOleada, GameImage spriteGrande) {
         int cantidad = 2 + Math.max(1, numeroOleada);
+        return crearOleada(numeroOleada, cantidad, spriteGrande);
+    }
+
+    public static List<Asteroide> crearOleada(
+            int numeroOleada,
+            int cantidad,
+            GameImage spriteGrande) {
         List<Asteroide> generados = new ArrayList<>();
         for (int i = 0; i < cantidad; i++) {
             double x = (i % 2 == 0) ? 100.0 + i * 40.0 : 700.0 - i * 40.0;
